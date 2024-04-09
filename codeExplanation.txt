@@ -1,0 +1,21 @@
+Data Processing:
+
+The input gesture image and test video are processed using OpenCV library in Python.
+For the input gesture image, it is resized to match the input shape required by the MobileNet model (224x224 pixels). Then it's converted into a NumPy array and preprocessed using the preprocess_input function from Keras.
+For the test video, each frame is resized similarly to the gesture image and processed in the same way as the gesture image.
+
+Model Selection/Development:
+
+MobileNet: Chosen for its lightweight architecture and suitability for mobile applications. It strikes a balance between model complexity and accuracy, making it efficient for real-time gesture detection tasks.
+Pre-trained Weights: Leveraging pre-trained weights on ImageNet allows the model to capture rich hierarchical features without the need for extensive training data. It speeds up development and ensures good initial performance.
+Global Average Pooling: By using global average pooling instead of fully connected layers, we obtain a fixed-length feature vector regardless of the input image size. This simplifies subsequent processing and reduces computational complexity.
+
+Detection Algorithm:
+
+Cosine Similarity: Cosine similarity is used as a measure of similarity between the gesture feature vector and frame feature vectors. It's well-suited for comparing high-dimensional feature vectors and is less sensitive to magnitude differences.
+Thresholding: A threshold is applied to determine when a frame contains a detected gesture. Setting an appropriate threshold is crucial to balance between sensitivity (detecting true positives) and specificity (minimizing false positives). It's typically chosen empirically based on validation results and domain knowledge.
+
+Annotation:
+
+Text Overlay: Adding text overlay provides visual feedback on detected gestures, aiding in result interpretation and validation. It enhances the usability of the system by providing real-time feedback to users.
+Font Size, Color, and Positioning: These parameters are chosen to ensure the text is visible and legible against varying backgrounds and lighting conditions in the video. Font size, color, and position are adjusted for optimal visibility and aesthetics.
